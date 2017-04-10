@@ -125,7 +125,7 @@ class TSNotificationCenter: NSObject {
     }
 
     //MARK: Use this to find out whether listeners for a notification exists
-    func hasGotListeners(notificationName:String?) -> Bool {
+    func hasObserver(notificationName:String?) -> Bool { //has observers
         guard let filteredListeners = self.listeners?.filter({
             return $0.name == notificationName
         }) else {

@@ -18,15 +18,15 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonFireAndPersist(_ sender: Any) {
-        TSNotificationCenter.defaultCenter.postTSNotification(notificationName:"experiment.notification", withObject: "notificationFireAndPersist" as AnyObject?, notificationFireType: NotificationFireType.notificationFireAndPersist)
+        TSNotificationCenter.defaultCenter.postTSNotification(notificationName:"experiment.notification", withObject: "FireAndPersist" as AnyObject?, notificationFireType: NotificationFireType.notificationFireAndPersist)
 
     }
     @IBAction func buttonFireAndForget(_ sender: Any) {
-        TSNotificationCenter.defaultCenter.postTSNotification(notificationName:"experiment.notification", withObject: "notificationFireAndForget" as AnyObject?, notificationFireType: NotificationFireType.notificationFireAndForget)
+        TSNotificationCenter.defaultCenter.postTSNotification(notificationName:"experiment.notification", withObject: "FireAndForget" as AnyObject?, notificationFireType: NotificationFireType.notificationFireAndForget)
 
     }
     @IBAction func buttonFireAndRememberOnce(_ sender: Any) {
-        TSNotificationCenter.defaultCenter.postTSNotification(notificationName:"experiment.notification", withObject: "notificationFireAndRememberOnceIfNotIntercepted" as AnyObject?, notificationFireType: NotificationFireType.notificationFireAndRememberOnceIfNotIntercepted)
+        TSNotificationCenter.defaultCenter.postTSNotification(notificationName:"experiment.notification", withObject: "FireAndRememberOnceIfNotIntercepted" as AnyObject?, notificationFireType: NotificationFireType.notificationFireAndRememberOnceIfNotIntercepted)
 
     }
     override func didReceiveMemoryWarning() {
