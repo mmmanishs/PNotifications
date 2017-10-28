@@ -36,7 +36,7 @@ class ViewController1: UIViewController {
         _ = TSNotificationCenter.defaultCenter.addObserverGuardAgainstReobserving(notificationName:"experiment.notification", observer: self, selector:#selector(ViewController1.notificationReceived(notification:)))
         updateObservingStatus()
     }
-    func notificationReceived(notification:TSNotification) {
+    @objc func notificationReceived(notification:TSNotification) {
         print("Received notification viewcontroller 1")
         if switchKillPersistant.isOn {
             notification.forget()
