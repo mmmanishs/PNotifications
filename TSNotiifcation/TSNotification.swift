@@ -8,6 +8,11 @@
 
 import Foundation
 class TSNotification:NSObject {
+    var name:String?
+    var payload:AnyObject?
+    var notificationFireType:NotificationFireType = NotificationFireType.notificationFireAndForget
+    var numberOfTimesDispatched:Int = 0
+    
     init(name:String,payload:AnyObject?,notificationFireType:NotificationFireType?){
         super.init()
         self.name = name
@@ -16,17 +21,15 @@ class TSNotification:NSObject {
             self.notificationFireType = notificationFireType
         }
     }
-    var name:String?
-    var payload:AnyObject?
-    var notificationFireType:NotificationFireType = NotificationFireType.notificationFireAndForget
-    var numberOfTimesDispatched:Int = 0
     
     func forget() {
         TSNotificationCenter.defaultCenter.remove(notification: self)
     }
+    
     func wasDispatched()  {
         numberOfTimesDispatched = numberOfTimesDispatched + 1
     }
+    
     func shouldRemoveFromQueue() -> Bool {
         switch self.notificationFireType {
         case .notificationFireAndForget:
