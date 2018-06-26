@@ -24,20 +24,17 @@ class TSNotification:NSObject {
     func forget() {
         TSNotificationCenter.defaultCenter.remove(notification: self)
     }
+    
     func wasDispatched()  {
         numberOfTimesDispatched = numberOfTimesDispatched + 1
     }
+    
     func shouldRemoveFromQueue() -> Bool {
         switch self.notificationFireType {
         case .notificationFireAndForget:
             return true
         case .notificationFireAndRememberOnceIfNotIntercepted:
-            if self.numberOfTimesDispatched >= 1 {
-                return true
-            }
-            else {
-                return false
-            }
+            return self.numberOfTimesDispatched >= 1
         case .notificationFireAndPersist:
             return false
         }

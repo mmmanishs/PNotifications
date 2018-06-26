@@ -18,5 +18,4 @@ class TSNotificationObserver:NSObject {
     var observer:NSObject?
     var selector:Selector?
     var name:String?
-
 }

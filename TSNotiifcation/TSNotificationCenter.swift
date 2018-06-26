@@ -19,10 +19,6 @@ class TSNotificationCenter: NSObject {
     static let defaultCenter = TSNotificationCenter()
     var listeners:[TSNotificationObserver]?
     var notificationsPosted:[TSNotification]?
-
-    override init() {
-        super.init()
-    }
     
   //MARK:Use this for posting notification
     func postTSNotification(notificationName:String?, withObject:AnyObject?, notificationFireType:NotificationFireType?){
@@ -49,7 +45,7 @@ class TSNotificationCenter: NSObject {
         }
         
         notificationsPosted?.append(notificationPosterObject)
-        self.runTSNotificationDispatcher(forPostedNotification: notificationPosterObject)
+        runTSNotificationDispatcher(forPostedNotification: notificationPosterObject)
     }
     
     //MARK:Use this for adding observer for notification
@@ -61,13 +57,11 @@ class TSNotificationCenter: NSObject {
         //Added to the queue
         let messageObject = TSNotificationObserver(name: notificationName, observer: observer, selector: selector)
         self.listeners?.append(messageObject)
-        
         self.runTSNotificationDispatcher(newObserver: messageObject)
-       
     }
     
     //MARK:Adding an observer safely. Guards against reobserving
-    func addObserverGuardAgainstReobserving(notificationName:String, observer:NSObject,selector:Selector) -> Bool{
+    func addObserverGuardAgainstReobserving(notificationName:String, observer:NSObject,selector:Selector) -> Bool {
         guard !isAnObserver(observer: observer) else {
             return false
         }
@@ -82,10 +76,12 @@ class TSNotificationCenter: NSObject {
         self.runTSNotificationDispatcher(newObserver: messageObject)
         return true
     }
+    
     //MARK:Use this for removing observer for notification
     func removeNotification(notificationName:String) {
         
     }
+    
     //MARK:Use this for removing observer for notification
     func removeObserver(observer:NSObject, name: String){
         guard let listenersForNotificationName = self.getListeners(notificationName: name) else {
@@ -141,12 +137,13 @@ class TSNotificationCenter: NSObject {
             return postedNotification.name == name
         }) != nil
     }
+    
     //MARK: This for returning all the objects listening to that particuar notification
     func getListeners(notificationName:String?) ->[TSNotificationObserver]?{
         guard let name = notificationName else {
             return listeners
         }
-        //Searching for addresssees
+        //Searching for addreses
         
         return listeners?.filter({
             let obj:TSNotificationObserver = $0
@@ -215,7 +212,6 @@ private extension TSNotificationCenter {
         let listeners = listeners else{
             return
         }
-        
         for (index,obj) in listeners.enumerated(){
             if obj.name == observerName{
                 notificationsPosted?.remove(at: index)
