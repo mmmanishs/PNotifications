@@ -18,15 +18,15 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonFireAndPersist(_ sender: Any) {
-        PNotificationCenter.defaultCenter.postPNotification(notificationName:"experiment.notification", withObject: "FireAndPersist" as AnyObject?, notificationFireType: NotificationFireType.notificationFireAndPersist)
+        PNotificationCenter.defaultCenter.post(notificationName:"experiment.notification", withObject: "FireAndPersist" as AnyObject?, notificationFireType: NotificationFireType.notificationFireAndPersist)
 
     }
     @IBAction func buttonFireAndForget(_ sender: Any) {
-        PNotificationCenter.defaultCenter.postPNotification(notificationName:"experiment.notification", withObject: "FireAndForget" as AnyObject?, notificationFireType: NotificationFireType.notificationFireAndForget)
+        PNotificationCenter.defaultCenter.post(notificationName:"experiment.notification", withObject: "FireAndForget" as AnyObject?, notificationFireType: NotificationFireType.notificationFireAndForget)
 
     }
     @IBAction func buttonFireAndRememberOnce(_ sender: Any) {
-        PNotificationCenter.defaultCenter.postPNotification(notificationName:"experiment.notification",
+        PNotificationCenter.defaultCenter.post(notificationName:"experiment.notification",
                                                               withObject: "FireAndRememberOnceIfNotIntercepted" as AnyObject?,
                                                               notificationFireType: NotificationFireType.notificationFireAndRememberOnceIfNotIntercepted)
 

@@ -19,15 +19,15 @@ class PNotificationCenter: NSObject {
     var observers = [PNotificationObserver]()
     var notificationsQueue = [PNotification]()
     
-  //MARK:Use this for posting notification
-    func postPNotification(notificationName:String,
-                           withObject:AnyObject?,
-                           notificationFireType:NotificationFireType) {
+    //MARK:Use this for posting notification
+    func post(notificationName:String,
+              withObject:AnyObject?,
+              notificationFireType:NotificationFireType) {
         
         //Add object to a queue with name as a identifier for that object
         let newNotification = PNotification(name: notificationName,
-                                             payload: withObject,
-                                             notificationFireType: notificationFireType)
+                                            payload: withObject,
+                                            notificationFireType: notificationFireType)
         
         //Check and remove other similar objects
         notificationsQueue = notificationsQueue.filter { notification in
@@ -71,7 +71,7 @@ class PNotificationCenter: NSObject {
             return (existingObserver.name == name) && (existingObserver.object != observer)
         }
     }
-
+    
     //MARK: Use this to find out whether an object is an observer
     func isAnObserver(object: NSObject) -> Bool {
         let filteredObserver = observers.filter { existingObserver in
