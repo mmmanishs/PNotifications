@@ -1,6 +1,6 @@
 //
-//  TSNotificationObserver.swift
-//  TSNotificationCenter
+//  PNotificationObserver.swift
+//  PNotificationCenter
 //
 //  Created by Singh,Manish on 9/20/16.
 //  Copyright © 2016 Singh,Manish. All rights reserved.
@@ -8,14 +8,15 @@
 
 import Foundation
 
-class TSNotificationObserver:NSObject {
+class PNotificationObserver: NSObject {
+    var object: NSObject
+    var selector: Selector
+    var name: String
+    
     init(name:String, observer:NSObject, selector:Selector){
-        super.init()
-        self.observer = observer
+        self.object = observer
         self.selector = selector
         self.name = name
+        super.init()
     }
-    var observer:NSObject?
-    var selector:Selector?
-    var name:String?
 }

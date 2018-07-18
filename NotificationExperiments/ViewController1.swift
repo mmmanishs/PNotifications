@@ -25,18 +25,18 @@ class ViewController1: UIViewController {
         self.payloadOutputLabel.text = ""
     }
     @IBAction func buttonUnsafeRegisterClicked(_ sender: Any) {
-        _ = TSNotificationCenter.defaultCenter.addObserver(notificationName:"experiment.notification", observer: self, selector:#selector(ViewController1.notificationReceived(notification:)))
+        _ = PNotificationCenter.defaultCenter.addObserver(notificationName:"experiment.notification", observer: self, selector:#selector(ViewController1.notificationReceived(notification:)))
         updateObservingStatus()
     }
     @IBAction func buttonUnregisterClicked(_ sender: Any) {
-        TSNotificationCenter.defaultCenter.removeObserver(observer: self)
+        PNotificationCenter.defaultCenter.removeObserver(observer: self)
         updateObservingStatus()
     }
     @IBAction func buttonRegisterClicked(_ sender: Any) {
-        _ = TSNotificationCenter.defaultCenter.addObserverGuardAgainstReobserving(notificationName:"experiment.notification", observer: self, selector:#selector(ViewController1.notificationReceived(notification:)))
+        _ = PNotificationCenter.defaultCenter.addObserverGuardAgainstReObserving(notificationName:"experiment.notification", observer: self, selector:#selector(ViewController1.notificationReceived(notification:)))
         updateObservingStatus()
     }
-    @objc func notificationReceived(notification:TSNotification) {
+    @objc func notificationReceived(notification:PNotification) {
         print("Received notification viewcontroller 1")
         if switchKillPersistant.isOn {
             notification.forget()
@@ -54,7 +54,7 @@ class ViewController1: UIViewController {
     }
     
     func updateObservingStatus() {
-        if TSNotificationCenter.defaultCenter.isAnObserver(observer: self) {
+        if PNotificationCenter.defaultCenter.isAnObserver(object: self) {
             self.observingStatusView.backgroundColor = UIColor.green
         }
         else {
