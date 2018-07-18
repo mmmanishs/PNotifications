@@ -24,14 +24,17 @@ class ViewController4: UIViewController {
     @IBAction func buttonClearClicked(_ sender: Any) {
         self.payloadOutputLabel.text = ""
     }
+    
     @IBAction func buttonUnsafeRegisterClicked(_ sender: Any) {
-        _ = PNotificationCenter.defaultCenter.addObserver(notificationName:"experiment.notification", observer: self, selector:#selector(ViewController1.notificationReceived(notification:)))
+        _ = PNotificationCenter.defaultCenter.addObserver(for:"experiment.notification", observer: self, selector:#selector(ViewController1.notificationReceived(notification:)))
         updateObservingStatus()
-    }    
+    }
+    
     @IBAction func buttonUnregisterClicked(_ sender: Any) {
         PNotificationCenter.defaultCenter.removeObserver(observer: self)
         updateObservingStatus()
     }
+    
     @IBAction func buttonRegisterClicked(_ sender: Any) {
         _ = PNotificationCenter.defaultCenter.addObserverGuardAgainstReObserving(notificationName:"experiment.notification", observer: self, selector:#selector(ViewController1.notificationReceived(notification:)))
         updateObservingStatus()

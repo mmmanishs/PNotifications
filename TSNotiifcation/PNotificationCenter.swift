@@ -23,6 +23,7 @@ class PNotificationCenter: NSObject {
     func postPNotification(notificationName:String,
                            withObject:AnyObject?,
                            notificationFireType:NotificationFireType) {
+        
         //Add object to a queue with name as a identifier for that object
         let newNotification = PNotification(name: notificationName,
                                              payload: withObject,
@@ -34,15 +35,15 @@ class PNotificationCenter: NSObject {
         }
         
         notificationsQueue.append(newNotification)
-        PNotificationsDispatcher.runPNotificationDispatcher(forPostedNotification: newNotification, observers: observers, notificationsQueue: &notificationsQueue)
+        PNotificationsDispatcher.dispatch(for : newNotification, observers: observers, notificationsQueue: &notificationsQueue)
     }
     
     //MARK:Use this for adding observer for notification
-    func addObserver(notificationName:String, observer: NSObject, selector:Selector) {
+    func addObserver(for name: String, observer: NSObject, selector:Selector) {
         //Added to the queue
-        let messageObject = PNotificationObserver(name: notificationName, observer: observer, selector: selector)
+        let messageObject = PNotificationObserver(name: name, observer: observer, selector: selector)
         observers.append(messageObject)
-        PNotificationsDispatcher.runPNotificationDispatcher(newObserver: messageObject, notificationsQueue: &notificationsQueue)
+        PNotificationsDispatcher.dispatch(newObserver: messageObject, notificationsQueue: &notificationsQueue)
     }
     
     //MARK:Adding an observer safely. Guards against reobserving
@@ -53,7 +54,7 @@ class PNotificationCenter: NSObject {
         //Added to the queue
         let messageObject = PNotificationObserver(name: notificationName, observer: observer, selector: selector)
         observers.append(messageObject)
-        PNotificationsDispatcher.runPNotificationDispatcher(newObserver: messageObject, notificationsQueue: &notificationsQueue)
+        PNotificationsDispatcher.dispatch(newObserver: messageObject, notificationsQueue: &notificationsQueue)
         return true
     }
     
@@ -106,5 +107,4 @@ private extension PNotificationCenter {
             return observer.name != observerName
         }
     }
-
 }

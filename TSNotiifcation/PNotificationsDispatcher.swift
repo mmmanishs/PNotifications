@@ -9,7 +9,7 @@
 import Foundation
 
 class PNotificationsDispatcher {
-    static func runPNotificationDispatcher(newObserver:PNotificationObserver, notificationsQueue: inout [PNotification]) {
+    static func dispatch(newObserver:PNotificationObserver, notificationsQueue: inout [PNotification]) {
         for (index, notification) in notificationsQueue.enumerated() {
             if notification.name == newObserver.name {
                 //Has a notification waiting for it
@@ -23,7 +23,7 @@ class PNotificationsDispatcher {
         }
     }
     
-    static func runPNotificationDispatcher(forPostedNotification notification:PNotification, observers: [PNotificationObserver], notificationsQueue: inout [PNotification]){
+    static func dispatch(for notification:PNotification, observers: [PNotificationObserver], notificationsQueue: inout [PNotification]){
         for observer in observers {
             if observer.name == notification.name {
                 _ = observer.object.perform(observer.selector, with: notification)

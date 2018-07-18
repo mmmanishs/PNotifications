@@ -26,7 +26,7 @@ class ViewController2: UIViewController {
     }
 
     @IBAction func buttonUnsafeRegisterClicked(_ sender: Any) {
-        _ = PNotificationCenter.defaultCenter.addObserver(notificationName:"experiment.notification", observer: self, selector:#selector(ViewController1.notificationReceived(notification:)))
+        _ = PNotificationCenter.defaultCenter.addObserver(for:"experiment.notification", observer: self, selector:#selector(ViewController1.notificationReceived(notification:)))
         updateObservingStatus()
     }
 
