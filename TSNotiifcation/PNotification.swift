@@ -38,4 +38,8 @@ class PNotification: NSObject {
             return false
         }
     }
+    
+    static func == (lhs: PNotification, rhs: PNotification) -> Bool {
+        return lhs.name == rhs.name
+    }
 }

@@ -67,7 +67,7 @@ class PNotificationCenter: NSObject {
     
     //MARK:Use this for removing observer for notification
     func removeObserver(observer:NSObject, name: String) {
-        observers = observers.filter{ existingObserver in
+        observers = observers.filter { existingObserver in
             return (existingObserver.name == name) && (existingObserver.object != observer)
         }
     }
@@ -88,7 +88,7 @@ class PNotificationCenter: NSObject {
     }
     
     func removeObserver(observer: NSObject){
-        observers = observers.filter{ existingObserver in
+        observers = observers.filter { existingObserver in
             return existingObserver.object != observer
         }
     }
