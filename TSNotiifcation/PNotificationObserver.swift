@@ -13,7 +13,7 @@ class PNotificationObserver: NSObject {
     var selector: Selector
     var name: String
     
-    init(name:String, observer:NSObject, selector:Selector){
+    init(name: String, observer: NSObject, selector: Selector) {
         self.object = observer
         self.selector = selector
         self.name = name

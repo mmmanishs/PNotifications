@@ -20,9 +20,9 @@ class PNotificationCenter: NSObject {
     var notificationsQueue = [PNotification]()
     
     //MARK:Use this for posting notification
-    func post(notificationName:String,
-              withObject:AnyObject?,
-              notificationFireType:NotificationFireType) {
+    func post(notificationName: String,
+              withObject: AnyObject?,
+              notificationFireType: NotificationFireType) {
         
         //Add object to a queue with name as a identifier for that object
         let newNotification = PNotification(name: notificationName,
@@ -47,7 +47,7 @@ class PNotificationCenter: NSObject {
     }
     
     //MARK:Adding an observer safely. Guards against reobserving
-    func addObserverGuardAgainstReObserving(notificationName:String, observer:NSObject, selector:Selector) -> Bool {
+    func addObserverGuardAgainstReObserving(notificationName: String, observer: NSObject, selector: Selector) -> Bool {
         guard !isAnObserver(object: observer) else {
             return false
         }
@@ -93,7 +93,6 @@ class PNotificationCenter: NSObject {
         }
     }
 }
-
 
 private extension PNotificationCenter {
     func handleFutureOfNotification(_ notification:PNotification) {

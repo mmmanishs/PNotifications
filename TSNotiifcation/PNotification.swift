@@ -7,13 +7,14 @@
 //
 
 import Foundation
+
 class PNotification: NSObject {
     var name: String
     var payload: AnyObject?
     var notificationFireType: NotificationFireType
     var numberOfTimesDispatched: Int = 0
-
-    init(name :String, payload :AnyObject?, notificationFireType :NotificationFireType){
+    
+    init(name: String, payload: AnyObject?, notificationFireType: NotificationFireType) {
         self.name = name
         self.payload = payload
         self.notificationFireType = notificationFireType

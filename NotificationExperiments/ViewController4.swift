@@ -12,12 +12,12 @@ class ViewController4: UIViewController {
     
     @IBOutlet weak var payloadOutputLabel: UILabel!
     @IBOutlet weak var switchKillPersistant: UISwitch!
-
     @IBOutlet weak var observingStatusView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         observingStatusView.layer.cornerRadius = 10
-
+        
         updateObservingStatus()
     }
     
@@ -64,9 +64,5 @@ class ViewController4: UIViewController {
         else {
             self.observingStatusView.backgroundColor = UIColor.red
         }
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
